@@ -3,8 +3,24 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialIcons } from '@expo/vector-icons';
 import { colors } from '../../constants/colors';
 import { sizes } from '../../constants/sizes';
+import { useNavigation } from '@react-navigation/native';
+import { ProfileStackParamList } from '../../types/navigation';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type ProfileScreenNavigationProp = StackNavigationProp<ProfileStackParamList, 'Profile'>;
 
 export default function ProfileScreen() {
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
+
+  const handleLogout = () => {
+    // Here you would typically clear any user data/session
+    // Then navigate to the Auth stack
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Auth' }],
+    });
+  };
+
   const userProfile = {
     name: 'John Doe',
     email: 'john.doe@example.com',
@@ -52,7 +68,7 @@ export default function ProfileScreen() {
             <Text style={styles.menuText}>Help & Support</Text>
             <MaterialIcons name="chevron-right" size={24} color={colors.text.secondary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.menuItem}>
+          <TouchableOpacity style={styles.menuItem} onPress={handleLogout}>
             <MaterialIcons name="logout" size={24} color={colors.error} />
             <Text style={[styles.menuText, { color: colors.error }]}>Logout</Text>
             <MaterialIcons name="chevron-right" size={24} color={colors.text.secondary} />

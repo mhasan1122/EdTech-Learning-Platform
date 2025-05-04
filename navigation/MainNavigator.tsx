@@ -3,7 +3,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen.tsx';
 import CourseDetailScreen from '../screens/course/CourseDetailScreen.tsx';
 import LiveClassesScreen from '../screens/live/LiveClassesScreen.tsx';
-import ProfileScreen from '../screens/profile/ProfileScreen.tsx';
+import { ProfileNavigator } from './ProfileNavigator';
 import { colors } from '../constants/colors';
 
 const Tab = createBottomTabNavigator();
@@ -44,7 +44,7 @@ export function MainNavigator() {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={ProfileNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="person" size={24} color={color} />
