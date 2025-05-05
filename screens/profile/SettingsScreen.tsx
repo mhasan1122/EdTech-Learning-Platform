@@ -9,6 +9,8 @@ import { useNavigation } from '@react-navigation/native';
 import { ProfileStackParamList } from '../../types/navigation';
 import { StackNavigationProp } from '@react-navigation/stack';
 
+
+
 type SettingsScreenNavigationProp = StackNavigationProp<ProfileStackParamList, 'Settings'>;
 
 export default function SettingsScreen() {
